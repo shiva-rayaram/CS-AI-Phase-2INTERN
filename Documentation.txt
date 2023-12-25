@@ -1,0 +1,61 @@
+Vehicle and Pedestrian Detection System
+
+
+Introduction
+This Python script implements a real-time vehicle and pedestrian detection system using OpenCV. The system captures video frames, detects moving vehicles, and counts them as they cross a predefined line. Additionally, it detects pedestrians in the video frame.
+
+Vehicle Detection
+Requirements
+Python 3.x
+OpenCV
+NumPy
+
+
+Downloading Pre-trained Cascade Classifiers
+To improve the accuracy of vehicle detection, you can download pre-trained cascade classifiers for car detection.
+
+Car Cascade Classifier: Download haarcascade_car.xml (Download the raw data from GitHub and unzip it.)
+Code Overview
+python
+Copy code
+# ... (Code for importing libraries and setting parameters)
+
+# Load pre-trained cascade classifier for car detection
+car_cascade = cv2.CascadeClassifier('path/to/haarcascade_car.xml')
+
+# ... (Rest of the code for video capture and processing)
+How It Works
+The script captures video frames from a specified file (video.mp4).
+Background subtraction is applied to detect moving objects in the video.
+Morphological operations are performed for noise reduction.
+Contours are identified in the processed frame.
+Rectangles are drawn around contours that meet specified size criteria.
+The script counts vehicles that cross a predefined counting line.
+The vehicle count is displayed on the video frame.
+Pedestrian Detection
+Requirements
+Python 3.x
+OpenCV
+Code Overview
+python
+Copy code
+# ... (Code for setting parameters)
+
+# Load pre-trained HOGDescriptor for pedestrian detection
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+# ... (Rest of the code for video capture and processing)
+How It Works
+The script captures video frames from a specified file (walking.avi).
+The frames are converted to grayscale.
+The HOG (Histogram of Oriented Gradients) descriptor is used for pedestrian detection.
+Detected pedestrians are outlined with rectangles.
+The script counts pedestrians that cross a predefined counting line.
+The pedestrian count is displayed on the video frame.
+Usage
+Ensure Python and required libraries are installed.
+Download the pre-trained cascade classifier for car detection as mentioned above.
+Set the video file paths ('video.mp4' and 'walking.avi') or adjust the video captures accordingly.
+Run the respective scripts for vehicle and pedestrian detection.
+Press the 'Esc' key to exit the programs.
